@@ -10,8 +10,8 @@ import btoa = require('btoa');
 // });
 
 export const mailchimpSubscribed = functions.auth.user().onCreate(event => {
-  const { email } = event;
-  createFetch(email)
+  const { email, displayName } = event;
+  createFetch(email, displayName)
     .then(resp => {
       console.log('Se suscribió el usuario ' + email);
       return resp.json();
@@ -20,7 +20,7 @@ export const mailchimpSubscribed = functions.auth.user().onCreate(event => {
   return event;
 });
 
-function createFetch(email: any) {
+function createFetch(email: any, displayName: any) {
   const MAILCHIMP_API_KEY = '';
   const listId = '';
   // NOTE: mailchimp's API uri differs depending on your location. us6 is the east coast.
@@ -31,7 +31,7 @@ function createFetch(email: any) {
     Accept: 'application/json',
     'Content-Type': 'application/json'
   };
-  const body = JSON.stringify({ email_address: email, status: 'subscribed' });
+  const body = JSON.stringify({ email_address: email, status: 'subscribed', name: displayName });
 
   return fetch(url, {
     method,
