@@ -17,8 +17,8 @@
     "@types/btoa": "^1.2.3",
     "@types/isomorphic-fetch": "0.0.35",
     "btoa": "^1.2.1",
-    "firebase-admin": "^8.0.0",
-    "firebase-functions": "^3.1.0",
+    "firebase-admin": "^11.4.1",
+    "firebase-functions": "^3.24.1",
     "isomorphic-fetch": "^2.2.1"
   },
   "devDependencies": {
